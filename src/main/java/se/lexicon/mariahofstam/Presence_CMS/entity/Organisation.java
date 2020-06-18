@@ -1,15 +1,22 @@
 package se.lexicon.mariahofstam.Presence_CMS.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Objects;
 
-public class Group {
+@Entity
+public class Organisation {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String groupName;
 
     // Constructors
-    public Group() {}
+    public Organisation() {}
 
-    public Group(String groupName) {
+    public Organisation(String groupName) {
         this.groupName = groupName;
     }
 
@@ -38,10 +45,10 @@ public class Group {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Group)) return false;
-        Group group = (Group) o;
-        return id == group.id &&
-                Objects.equals(groupName, group.groupName);
+        if (!(o instanceof Organisation)) return false;
+        Organisation organisation = (Organisation) o;
+        return id == organisation.id &&
+                Objects.equals(groupName, organisation.groupName);
     }
 
     @Override

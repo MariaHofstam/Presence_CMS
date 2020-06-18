@@ -1,13 +1,25 @@
 package se.lexicon.mariahofstam.Presence_CMS.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+@Entity
 public class AttendanceStatus {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private final LocalDateTime creationDateTime;
 
     // Constructor
+
+    public AttendanceStatus(){
+        creationDateTime = LocalDateTime.now();
+    }
+
     public AttendanceStatus(LocalDateTime creationDateTime) {
         this.creationDateTime = creationDateTime;
     }

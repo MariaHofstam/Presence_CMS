@@ -1,9 +1,15 @@
 package se.lexicon.mariahofstam.Presence_CMS.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Objects;
 
+@Entity
 public class Member {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private boolean active;
     private String firstName;

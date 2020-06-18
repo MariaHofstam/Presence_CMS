@@ -10,8 +10,8 @@ public class CommandLine implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        Group firstGroup = new Group("NumberOne");
-        Group secondGroup = new Group("NumberTwo");
+        Organisation firstGroup = new Organisation("NumberOne");
+        Organisation secondGroup = new Organisation("NumberTwo");
 
         AttendanceStatus status1 = new AttendanceStatus(LocalDateTime.now());
 
@@ -20,6 +20,7 @@ public class CommandLine implements CommandLineRunner {
         Note abc = new Note("title1", "text1");
 
         Member Sara = new Member(true, "Sara", "Petersson", "0708523465", "sara.petersson@abcdef.com", "");
+
 
     }
 }
