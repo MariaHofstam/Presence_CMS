@@ -1,9 +1,9 @@
 package se.lexicon.mariahofstam.Presence_CMS.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -18,17 +18,52 @@ public class Member {
     private String eMail;
     private String extraInfo;
 
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH},
+            fetch = FetchType.LAZY)
+    private Organisation group;
+
+     @OneToMany(
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH},
+            fetch = FetchType.LAZY,
+            mappedBy = "member",     //declared in class AttendenceStatus, a @ManyToOne
+            orphanRemoval = true
+    )
+    private List<AttendanceStatus> attendanceList;    //List of attendance-statuses for this member
+
+
+
     // Constructors
     public Member(){}
 
-    public Member(boolean active, String firstName, String lastName, String phone, String eMail, String extraInfo) {
+    public Member(boolean active, String firstName, String lastName, String phone, String eMail, String extraInfo, Organisation group) {
         this.active = active;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phone = phone;
         this.eMail = eMail;
         this.extraInfo = extraInfo;
+        this.group = group;
+        this.attendanceList = new ArrayList<>();
     }
+
+
+    //Methods for adding and removing attendance-statuses for the member to the attendanceList
+    public void addAttendanceStatus(StatusCode code) {
+        AttendanceStatus attendance = new AttendanceStatus(LocalDateTime.now(), this, code);
+
+        if (!attendanceList.contains(attendance)) {
+            attendanceList.add(attendance);
+        }
+
+    }
+
+    public void removeAttendanceStatus(AttendanceStatus attendance) {
+        if(attendanceList.contains(attendance)) {
+            attendanceList.remove(attendance);
+        }
+    }
+
+
 
     //Getters and Setters
     public int getId() {

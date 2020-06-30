@@ -1,9 +1,8 @@
 package se.lexicon.mariahofstam.Presence_CMS.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -15,6 +14,16 @@ public class StatusCode {
     private String shortDescription;
     private String colorCode;
 
+
+    @OneToMany(
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH},
+            fetch = FetchType.LAZY,
+            mappedBy = "code",     //declared in class AttendanceStatus, a @ManyToOne
+            orphanRemoval = true
+    )
+    private List<AttendanceStatus> attendanceStatusList;    //List of attendanceStatuses for this status-code
+
+
     // Constructors
 
     public StatusCode(){}
@@ -23,6 +32,7 @@ public class StatusCode {
         this.codeName = codeName;
         this.shortDescription = shortDescription;
         this.colorCode = colorCode;
+        this.attendanceStatusList = new ArrayList<>();
     }
 
     //Getters and Setters

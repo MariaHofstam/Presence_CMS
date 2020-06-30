@@ -1,9 +1,6 @@
 package se.lexicon.mariahofstam.Presence_CMS.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -14,14 +11,26 @@ public class AttendanceStatus {
     private int id;
     private final LocalDateTime creationDateTime;
 
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH},
+            fetch = FetchType.LAZY)
+    private Member member;
+
+
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH},
+            fetch = FetchType.LAZY)
+    private StatusCode code;
+
+
     // Constructor
 
     public AttendanceStatus(){
         creationDateTime = LocalDateTime.now();
     }
 
-    public AttendanceStatus(LocalDateTime creationDateTime) {
+    public AttendanceStatus(LocalDateTime creationDateTime, Member member, StatusCode code) {
         this.creationDateTime = creationDateTime;
+        this.member = member;
+        this.code = code;
     }
 
     //Getters and Setters

@@ -1,9 +1,8 @@
 package se.lexicon.mariahofstam.Presence_CMS.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -13,12 +12,24 @@ public class Organisation {
     private int id;
     private String groupName;
 
+
+    @OneToMany(
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH},
+            fetch = FetchType.LAZY,
+            mappedBy = "group",     //declared in class Member, a @ManyToOne
+            orphanRemoval = true
+    )
+    private List<Member> memberList;    //List of members for this group
+
+
     // Constructors
     public Organisation() {}
 
     public Organisation(String groupName) {
         this.groupName = groupName;
+        this.memberList = new ArrayList<>();
     }
+
 
     //Getters and Setters
 
@@ -33,6 +44,24 @@ public class Organisation {
     public void setGroupName(String groupName) {
         this.groupName = groupName;
     }
+
+
+    //Methods for adding and removing members to the memberList
+    public void addMember(Member member){
+
+        if (!memberList.contains(member)) {
+            memberList.add(member);
+        }
+
+    }
+
+    public void removeMember(Member member) {
+        if(memberList.contains(member)) {
+            memberList.remove(member);
+        }
+    }
+
+
 
     @Override
     public String toString() {

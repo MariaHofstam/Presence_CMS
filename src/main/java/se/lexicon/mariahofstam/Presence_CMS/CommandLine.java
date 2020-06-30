@@ -32,17 +32,39 @@ public class CommandLine implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
+       //Organisations/groups
         Organisation firstGroup = organisationRepo.save(new Organisation("NumberOne"));
         Organisation secondGroup = organisationRepo.save(new Organisation("NumberTwo"));
 
-        AttendanceStatus status1 = attendanceStatusRepo.save(new AttendanceStatus(LocalDateTime.now()));
-
+        //Status-codes
         StatusCode code1 = statusCodeRepo.save(new StatusCode("status1", "abcd", "yellow"));
+        StatusCode code2 = statusCodeRepo.save(new StatusCode("status2", "usttalt","green"));
+
+        //Members, connecting to a group
+        Member sara = new Member(true, "Sara", "Peterson", "0708523465", "sara.petersson@abcdef.com", "", firstGroup);
+        Member andreas = new Member(true,"Andreas", "Olsson", "0703287645", "andreas.karlsson@gladaladan.se", "diabetes", secondGroup);
+        Member gunilla = new Member(true, "Gunilla", "Sjöström", "08653429", "gunillaa.sjostrom@telia.se","seasick", firstGroup);
+        Member sven = new Member(false, "Sven", "Karlsson", "0734258790", "sven.karlsson@gmail.com", "", secondGroup);
+
+        //Add member to a group
+        firstGroup.addMember(sara);
+        firstGroup.addMember(gunilla);
+        secondGroup.addMember(andreas);
+        secondGroup.addMember(sven);
+
+        //Add Attendance status for a member
+        sara.addAttendanceStatus(code1);
+        gunilla.addAttendanceStatus(code2);
+        andreas.addAttendanceStatus(code1);
+        sven.addAttendanceStatus(code2);
+
+
+//---------------------------------------------------------------------------
 
         Note abc = noteRepo.save(new Note("title1", "text1"));
 
-        Member Sara = memberRepo.save(new Member(true, "Sara", "Petersson",
-                "0708523465", "sara.petersson@abcdef.com", ""));
+
+
 
 
     }
