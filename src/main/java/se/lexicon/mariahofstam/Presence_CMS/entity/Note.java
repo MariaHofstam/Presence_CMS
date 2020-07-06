@@ -1,9 +1,6 @@
 package se.lexicon.mariahofstam.Presence_CMS.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
@@ -14,12 +11,17 @@ public class Note {
     private String title;
     private String text;
 
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH},
+            fetch = FetchType.LAZY)
+    private AttendanceStatus attendanceStatus;
+
     // Constructors
     public Note(){}
 
-    public Note(String title, String text) {
+    public Note(String title, String text, AttendanceStatus attendanceStatus) {
         this.title = title;
         this.text = text;
+        this.attendanceStatus = attendanceStatus;
     }
 
     //Getters and Setters

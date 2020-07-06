@@ -60,8 +60,9 @@ public class CommandLine implements CommandLineRunner {
 
 
 //---------------------------------------------------------------------------
+        AttendanceStatus status1 = attendanceStatusRepo.save(new AttendanceStatus(LocalDateTime.now(), sara, code1));
 
-        Note abc = noteRepo.save(new Note("title1", "text1"));
+        Note abc = noteRepo.save(new Note("Test", "Tja, något ska man väl kunna skriva ihop", status1));
 
 
 
