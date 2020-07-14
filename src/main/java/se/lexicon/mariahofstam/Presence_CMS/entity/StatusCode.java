@@ -14,7 +14,6 @@ public class StatusCode {
     private String shortDescription;
     private String colorCode;
 
-
     @OneToMany(
             cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH},
             fetch = FetchType.LAZY,
@@ -59,6 +58,7 @@ public class StatusCode {
         this.shortDescription = shortDescription;
     }
 
+
     public String getColorCode() {
         return colorCode;
     }
@@ -66,6 +66,8 @@ public class StatusCode {
     public void setColorCode(String colorCode) {
         this.colorCode = colorCode;
     }
+
+
 
     @Override
     public String toString() {

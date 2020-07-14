@@ -11,7 +11,7 @@ public class Note {
     private String title;
     private String text;
 
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH},
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH},
             fetch = FetchType.LAZY)
     private AttendanceStatus attendanceStatus;
 

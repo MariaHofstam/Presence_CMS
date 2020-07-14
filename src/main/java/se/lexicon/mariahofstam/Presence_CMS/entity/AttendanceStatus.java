@@ -2,6 +2,8 @@ package se.lexicon.mariahofstam.Presence_CMS.entity;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -20,6 +22,14 @@ public class AttendanceStatus {
             fetch = FetchType.LAZY)
     private StatusCode code;
 
+    @OneToMany(
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH},
+            fetch = FetchType.LAZY,
+            mappedBy = "attendanceStatus",     //declared in class Note, a @ManyToOne
+            orphanRemoval = true
+    )
+    private List<Note> noteList;    //List of notes for this attendanceStatus
+
 
     // Constructor
 
@@ -31,6 +41,7 @@ public class AttendanceStatus {
         this.creationDateTime = creationDateTime;
         this.member = member;
         this.code = code;
+        this.noteList = new ArrayList<>();
     }
 
     //Getters and Setters
@@ -42,6 +53,20 @@ public class AttendanceStatus {
         return creationDateTime;
     }
 
+    //Methods for adding and removing notes to the noteList
+    public void addNote(Note note){
+
+        if (!noteList.contains(note)) {
+            noteList.add(note);
+        }
+
+    }
+
+    public void removeNote(Note note) {
+        if(noteList.contains(note)) {
+            noteList.remove(note);
+        }
+    }
 
     @Override
     public String toString() {
