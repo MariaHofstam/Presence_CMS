@@ -1,5 +1,6 @@
 package se.lexicon.mariahofstam.Presence_CMS;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -37,8 +38,8 @@ public class CommandLine implements CommandLineRunner {
         Organisation secondGroup = organisationRepo.save(new Organisation("NumberTwo"));
 
         //Status-codes
-        StatusCode code1 = statusCodeRepo.save(new StatusCode("status1", "abcd", "yellow"));
-        StatusCode code2 = statusCodeRepo.save(new StatusCode("status2", "usttalt","green"));
+        StatusCode code1 = statusCodeRepo.save(new StatusCode("status1", "abcd", ColorCode.YELLOW));
+        StatusCode code2 = statusCodeRepo.save(new StatusCode("status2", "usttalt", ColorCode.GREEN));
 
         //Members, connecting to a group
         Member sara = new Member(true, "Sara", "Peterson", "0708523465", "sara.petersson@abcdef.com", "", firstGroup);
