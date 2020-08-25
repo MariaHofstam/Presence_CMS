@@ -34,6 +34,11 @@ public class Member {
 
     // Constructors
     public Member(){}
+    
+    public Member(int id, boolean active, String firstName, String lastName, String phone, String eMail, String extraInfo, Organisation group) {
+    	this(active, firstName, lastName, phone, eMail, extraInfo, group);
+    	this.id = id;
+    }
 
     public Member(boolean active, String firstName, String lastName, String phone, String eMail, String extraInfo, Organisation group) {
         this.active = active;
@@ -116,6 +121,10 @@ public class Member {
 
     public void setExtraInfo(String extraInfo) {
         this.extraInfo = extraInfo;
+    }
+    
+    public Organisation getGroup() {
+    	return group;
     }
 
     @Override

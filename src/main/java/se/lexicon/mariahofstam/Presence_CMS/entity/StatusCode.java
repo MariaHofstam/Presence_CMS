@@ -12,7 +12,7 @@ public class StatusCode {
     private int id;
     private String codeName;
     private String shortDescription;
-    private String colorCode;
+    private ColorCode colorCode;
 
     @OneToMany(
             cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH},
@@ -26,8 +26,13 @@ public class StatusCode {
     // Constructors
 
     public StatusCode(){}
+    
+    public StatusCode(int id, String codeName, String shortDescription, ColorCode colorCode) {
+    	this(codeName, shortDescription, colorCode);
+    	this.id = id;
+    }
 
-    public StatusCode(String codeName, String shortDescription, String colorCode) {
+    public StatusCode(String codeName, String shortDescription, ColorCode colorCode) {
         this.codeName = codeName;
         this.shortDescription = shortDescription;
         this.colorCode = colorCode;
@@ -59,11 +64,11 @@ public class StatusCode {
     }
 
 
-    public String getColorCode() {
+    public ColorCode getColorCode() {
         return colorCode;
     }
 
-    public void setColorCode(String colorCode) {
+    public void setColorCode(ColorCode colorCode) {
         this.colorCode = colorCode;
     }
 
