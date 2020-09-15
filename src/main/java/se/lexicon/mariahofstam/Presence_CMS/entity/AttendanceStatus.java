@@ -66,6 +66,7 @@ public class AttendanceStatus {
         return code;
     }
 
+
     //Methods for adding and removing notes to the noteList
     public void addNote(Note note){
 
