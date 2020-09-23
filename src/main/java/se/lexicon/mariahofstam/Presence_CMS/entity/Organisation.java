@@ -24,10 +24,10 @@ public class Organisation {
 
     // Constructors
     public Organisation() {}
-    
+
     public Organisation(int id, String groupName) {
-    	this(groupName);
-    	this.id = id;
+        this(groupName);
+        this.id = id;
     }
 
     public Organisation(String groupName) {

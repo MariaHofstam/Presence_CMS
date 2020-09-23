@@ -10,5 +10,4 @@ import java.util.List;
 public interface AttendanceStatusRepo extends CrudRepository<AttendanceStatus, Integer> {
     List<AttendanceStatus> findByMember(Member member);
     List<AttendanceStatus> findByCreationDateTimeBefore(LocalDateTime someDateTime);
-
 }

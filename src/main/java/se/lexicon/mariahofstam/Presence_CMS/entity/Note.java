@@ -19,10 +19,10 @@ public class Note {
     public Note(){}
 
     public Note(int id, String title, String text, AttendanceStatus attendanceStatus) {
-    	this(title, text, attendanceStatus);
-    	this.id = id;
+        this(title, text, attendanceStatus);
+        this.id = id;
     }
-    
+
     public Note(String title, String text, AttendanceStatus attendanceStatus) {
         this.title = title;
         this.text = text;
@@ -50,9 +50,9 @@ public class Note {
     public void setText(String text) {
         this.text = text;
     }
-    
+
     public AttendanceStatus getAttendanceStatus() {
-    	return attendanceStatus;
+        return attendanceStatus;
     }
 
 

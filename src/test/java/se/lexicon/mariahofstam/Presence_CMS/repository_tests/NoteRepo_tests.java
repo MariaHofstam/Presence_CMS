@@ -26,7 +26,7 @@ public class NoteRepo_tests {
 
     private Organisation teamAlpha = new Organisation("teamAlpha");
     private Member annika = new Member(true, "Annika", "Karlsson", "0734257529", "annika.karlsson@gmail.com","No info", teamAlpha);
-    private StatusCode code1 = new StatusCode("status1", "abcd", "yellow");
+    private StatusCode code1 = new StatusCode("status1", "abcd", ColorCode.YELLOW);
 
 
     @BeforeEach

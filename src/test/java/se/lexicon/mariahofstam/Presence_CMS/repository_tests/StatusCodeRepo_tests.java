@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.transaction.annotation.Transactional;
+import se.lexicon.mariahofstam.Presence_CMS.entity.ColorCode;
 import se.lexicon.mariahofstam.Presence_CMS.entity.StatusCode;
 import se.lexicon.mariahofstam.Presence_CMS.repositories.StatusCodeRepo;
 
@@ -26,8 +27,8 @@ public class StatusCodeRepo_tests {
     @BeforeEach
     public void init() {
         //Create some StatusCodes
-        StatusCode red = new StatusCode("codeRed", "WARNING", "red");
-        StatusCode green = new StatusCode("codeGreen", "OKEJ", "green");
+        StatusCode red = new StatusCode("codeRed", "WARNING", ColorCode.RED);
+        StatusCode green = new StatusCode("codeGreen", "OKEJ", ColorCode.GREEN);
 
        testCode = testRepo.save(red);
        testRepo.save(green);

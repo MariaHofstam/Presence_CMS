@@ -22,7 +22,7 @@ public class Member {
             fetch = FetchType.LAZY)
     private Organisation group;
 
-     @OneToMany(
+    @OneToMany(
             cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH},
             fetch = FetchType.LAZY,
             mappedBy = "member",     //declared in class AttendenceStatus, a @ManyToOne
@@ -34,10 +34,10 @@ public class Member {
 
     // Constructors
     public Member(){}
-    
+
     public Member(int id, boolean active, String firstName, String lastName, String phone, String eMail, String extraInfo, Organisation group) {
-    	this(active, firstName, lastName, phone, eMail, extraInfo, group);
-    	this.id = id;
+        this(active, firstName, lastName, phone, eMail, extraInfo, group);
+        this.id = id;
     }
 
     public Member(boolean active, String firstName, String lastName, String phone, String eMail, String extraInfo, Organisation group) {
@@ -122,9 +122,9 @@ public class Member {
     public void setExtraInfo(String extraInfo) {
         this.extraInfo = extraInfo;
     }
-    
+
     public Organisation getGroup() {
-    	return group;
+        return group;
     }
 
     @Override
@@ -158,4 +158,5 @@ public class Member {
     public int hashCode() {
         return Objects.hash(id, active, firstName, lastName, phone, eMail, extraInfo);
     }
+
 }

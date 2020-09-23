@@ -27,7 +27,7 @@ public class AttendanceStatusRepo_tests {
     private Organisation teamAlpha = new Organisation("teamAlpha");
     private Member annika = new Member(true, "Annika", "Karlsson", "0734257529", "annika.karlsson@gmail.com","No info", teamAlpha);
     private Member pelle = new Member(true, "Per", "Olsson", "0731738450", "per.olsson@gmail.com", "", teamAlpha);
-    private StatusCode code1 = new StatusCode("status1", "abcd", "yellow");
+    private StatusCode code1 = new StatusCode("status1", "abcd", ColorCode.GREEN);
 
     private LocalDateTime param1 = LocalDateTime.of(2020, 8, 9, 14, 20);
     private LocalDateTime param2 = LocalDateTime.of(2020, 8, 10, 13, 15);

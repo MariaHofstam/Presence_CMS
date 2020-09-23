@@ -1,6 +1,5 @@
 package se.lexicon.mariahofstam.Presence_CMS;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -33,7 +32,7 @@ public class CommandLine implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-       //Organisations/groups
+        //Organisations/groups
         Organisation firstGroup = organisationRepo.save(new Organisation("NumberOne"));
         Organisation secondGroup = organisationRepo.save(new Organisation("NumberTwo"));
 

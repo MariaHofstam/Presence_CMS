@@ -36,10 +36,10 @@ public class AttendanceStatus {
     public AttendanceStatus(){
         creationDateTime = LocalDateTime.now();
     }
-    
+
     public AttendanceStatus(int id, LocalDateTime creationDateTime, Member member, StatusCode code) {
-    	this(creationDateTime, member, code);
-    	this.id = id;
+        this(creationDateTime, member, code);
+        this.id = id;
     }
 
     public AttendanceStatus(LocalDateTime creationDateTime, Member member, StatusCode code) {
@@ -57,14 +57,15 @@ public class AttendanceStatus {
     public LocalDateTime getCreationDateTime() {
         return creationDateTime;
     }
-    
+
     public Member getMember() {
-    	return member;
+        return member;
     }
-    
+
     public StatusCode getCode() {
-    	return code;
+        return code;
     }
+
 
     //Methods for adding and removing notes to the noteList
     public void addNote(Note note){

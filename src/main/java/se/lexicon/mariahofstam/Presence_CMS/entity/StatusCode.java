@@ -26,10 +26,10 @@ public class StatusCode {
     // Constructors
 
     public StatusCode(){}
-    
+
     public StatusCode(int id, String codeName, String shortDescription, ColorCode colorCode) {
-    	this(codeName, shortDescription, colorCode);
-    	this.id = id;
+        this(codeName, shortDescription, colorCode);
+        this.id = id;
     }
 
     public StatusCode(String codeName, String shortDescription, ColorCode colorCode) {
