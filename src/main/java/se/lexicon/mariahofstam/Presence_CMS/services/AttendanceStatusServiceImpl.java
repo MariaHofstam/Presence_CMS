@@ -59,7 +59,7 @@ public class AttendanceStatusServiceImpl implements AttendanceStatusService {
 
     @Override
     public List<AttendanceStatusDto> findByCreationDate(LocalDateTime someDateTime) throws NoSuchElementException {
-        List<AttendanceStatus> statuses = repo.findByCreationDateTimeBefore(someDateTime);
+        List<AttendanceStatus> statuses = repo.findByCreationDateTime(someDateTime);
 
         if (statuses.isEmpty()){
             throw new NoSuchElementException("There is no attendance for the date - " + someDateTime + " in the database.");

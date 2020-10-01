@@ -35,7 +35,6 @@ public class OrganisationServiceImpl implements OrganisationService {
     @Override
     public List<OrganisationDto> findAll() throws NoSuchElementException {
         List<Organisation> groups = (List<Organisation>) repo.findAll();
-
         if (groups.isEmpty()){
             throw new NoSuchElementException("There are no organisations in the database.");
         } else{

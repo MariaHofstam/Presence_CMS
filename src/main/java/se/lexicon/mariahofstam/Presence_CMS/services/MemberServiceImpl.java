@@ -67,8 +67,8 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public List<MemberDto> findByEmail(String eMail) throws NoSuchElementException {
-        List<Member> members = repo.findByEmailIgnoreCaseContaining(eMail);
+   public List<MemberDto> findByEmail(String eMail) throws NoSuchElementException {
+        List<Member> members = repo.findByeMailIgnoreCaseContaining(eMail);
 
         if (members.isEmpty()){
             throw new NoSuchElementException("There are no member with the email - " + eMail + " in the database.");

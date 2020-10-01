@@ -10,7 +10,7 @@ public interface MemberService {
     MemberDto findById(int id);
     List<MemberDto> findAll() throws NoSuchElementException;
     List<MemberDto> findByFirstName(String firstName) throws NoSuchElementException;
-    List<MemberDto> findByLastName (String lastName) throws NoSuchElementException;
+    List<MemberDto> findByLastName (String lastName) throws NoSuchElementException; //Används ej???
     List<MemberDto> findByEmail(String eMail) throws NoSuchElementException;
 
     MemberDto createMember(MemberDto memberDto);

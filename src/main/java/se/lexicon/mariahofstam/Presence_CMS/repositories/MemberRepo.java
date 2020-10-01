@@ -8,5 +8,5 @@ import java.util.List;
 public interface MemberRepo extends CrudRepository<Member, Integer> {
     List<Member> findByFirstNameIgnoreCaseContaining(String name);
     List<Member> findByLastNameIgnoreCaseContaining(String name);
-    List<Member> findByEmailIgnoreCaseContaining(String name);
+    List<Member> findByeMailIgnoreCaseContaining(String name);
 }
